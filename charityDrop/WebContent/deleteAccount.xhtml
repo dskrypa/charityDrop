@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<link rel="stylesheet" type="text/css" href="main.css" />
+</h:head>
+<h:body styleClass="body">
+	<center>
+		<h:outputText value="Account Deletion" styleClass="header" />
+		<br/>
+		<h:messages errorClass="errorMessage" infoClass="infoMessage" warnClass="warnMessage" />
+	</center>
+	<div class="container">
+		<br/>
+		<h:form>
+			<center>Are you sure you want to delete your account?</center>
+			<center>WARNING: This cannot be undone!</center>
+			<center>Please enter your password twice to confirm.</center>
+			<h:panelGrid columns="2">
+				<h:outputText value="Password" />
+				<h:inputSecret id="password" value="#{accBean.password}" binding="#{password}"
+					required="true" maxLength="255" requiredMessage="Please enter new password!"
+				></h:inputSecret>
+				<h:outputText value="Password" />
+				<h:inputSecret id="confirmpassword" value="#{accBean.confirmpassword}"
+					required="true" maxLength="255" requiredMessage="Please confirm new password!"
+					validator="#{accBean.pwValidator}"
+				>
+					<f:attribute name="password" value="#{password}" />
+				</h:inputSecret>
+			</h:panelGrid>
+			<center><h:commandButton type="submit" value="Delete Account" action="#{accBean.deleteAccount}" /></center>
+		</h:form>
+	</div>
+</h:body>
+</html>

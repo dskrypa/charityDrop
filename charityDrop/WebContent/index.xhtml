@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<link rel="stylesheet" type="text/css" href="main.css" />
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{sessionBean.reset}" />
+	</f:metadata>
+</h:head>
+<h:body styleClass="body">
+	<center>
+		<h:outputText value="Charity Drop" styleClass="header" />
+	</center>
+	<div class="container">
+		<h:form>
+			<h:messages errorClass="errorMessage" infoClass="infoMessage" warnClass="warnMessage" />
+			
+			<h:panelGrid columns="2">
+				<h:outputText value="Email" />
+				<h:inputText id="email" value="#{accBean.email}"
+					required="true" requiredMessage="Please enter your email address"
+				></h:inputText>
+				<h:outputText value="Password" />
+				<h:inputSecret id="password" binding="#{password}" value="#{accBean.password}"
+					required="true" requiredMessage="Please Enter Password!"
+				></h:inputSecret>
+				
+				<h:commandButton styleClass="button butA" type="submit" value="Submit" action="#{accBean.validateLogin}" />
+				<h:commandButton styleClass="button butB" type="reset" value="Reset" />
+			</h:panelGrid>
+		</h:form>
+		<br/>
+		<h:outputLink id="toDonate" value="donate.xhtml"><h:outputText value="Make a Donation Without an Account" /></h:outputLink>
+		<br/><br/>
+		<h:outputLink id="toCreate" value="registration.xhtml"><h:outputText value="Create Account" /></h:outputLink>
+		<br/>
+		
+		<h:form>
+			<h:outputText value="Donation Number" />
+			<h:inputText id="donationNumber" value="#{donBean.donId}"
+				required="true" requiredMessage="Please enter a valid donation number"
+			></h:inputText>
+			<h:commandButton type="submit" value="Edit Donation" action="#{donBean.initDonationEdit}" />
+		</h:form>
+	</div>
+</h:body>
+</html>

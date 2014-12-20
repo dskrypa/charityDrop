@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14180043991000" configfile="/charityDrop/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="registration.xhtml" x="49" y="36" id="pf14180046125501" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14180046125502" path="/registration.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="regConfirmation.xhtml" x="175" y="36" id="pf14180046125504" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14180046125502" path="/regConfirmation.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="216" y="144" id="pf14181563198150" referenceLink="//@navigationRule.8/@navigationCase.0/@toViewId|" outlinks="pf14181563198151 pf14190070894832" inlinks="pf141901768529911" path="/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="donate.xhtml" x="684" y="229" id="pf14181563198152" referenceLink="//@navigationRule.6/@navigationCase.0/@toViewId|" outlinks="pf14189603971960" inlinks="pf14190132767369" path="/donate.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="donationReceipt.xhtml" x="423" y="408" id="pf14189603971961" referenceLink="//@navigationRule.9/@fromViewId|" outlinks="pf141901768529911 pf141901768529912" inlinks="pf14189603971960 pf14190070894833" path="/donationReceipt.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="addAddress.xhtml" x="552" y="108" id="pf14190031746471" referenceLink="//@navigationRule.7/@fromViewId|" outlinks="pf14190132767369 pf141901327673610" path="/addAddress.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editDonation.xhtml" x="432" y="229" id="pf14190070894834" referenceLink="//@navigationRule.7/@navigationCase.0/@toViewId|" outlinks="pf14190070894833 pf14190321800763" inlinks="pf14190070894832 pf14190111200855 pf141901327673610" path="/editDonation.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="userPanel.xhtml" x="54" y="408" id="pf14190111200856" referenceLink="//@navigationRule.9/@navigationCase.0/@toViewId|" outlinks="pf14190111200855" inlinks="pf14181563198151 pf141901768529912 pf14190321800763" path="/userPanel.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="deleteAccount.xhtml" x="336" y="36" id="pf14190224395190" referenceLink="//@navigationRule.10/@fromViewId|" outlinks="pf14190224395191" path="/deleteAccount.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="goodbye.xhtml" x="492" y="36" id="pf14190224395192" referenceLink="//@navigationRule.10/@navigationCase.0/@toViewId|" inlinks="pf14190224395191" path="/goodbye.xhtml"/>
+  <links id="pf14180046125502" target="pf14180046125504" source="pf14180046125501" outcome="success" redirect="true" fromaction="#{accBean.addUser}"/>
+  <links id="pf14181563198151" target="pf14190111200856" source="pf14181563198150" outcome="success" redirect="true" fromaction="#{accBean.validateLogin}"/>
+  <links id="pf14189603971960" target="pf14189603971961" source="pf14181563198152" outcome="success" redirect="true" fromaction="#{donBean.addDonation}"/>
+  <links id="pf14190070894832" target="pf14190070894834" source="pf14181563198150" outcome="success" redirect="true" fromaction="#{donBean.initDonationEdit}"/>
+  <links id="pf14190070894833" target="pf14189603971961" source="pf14190070894834" outcome="success" redirect="true" fromaction="#{donBean.updateDonation}"/>
+  <links id="pf14190111200855" target="pf14190070894834" source="pf14190111200856" outcome="success" redirect="true" fromaction="#{donBean.initDonationEdit}"/>
+  <links id="pf14190132767369" target="pf14181563198152" source="pf14190031746471" outcome="success_d" redirect="true" fromaction="#{accBean.addAddress}"/>
+  <links id="pf141901327673610" target="pf14190070894834" source="pf14190031746471" outcome="success_e" redirect="true" fromaction="#{accBean.addAddress}"/>
+  <links id="pf141901768529911" target="pf14181563198150" source="pf14189603971961" outcome="index" redirect="true" fromaction="#{sessionBean.goHome}"/>
+  <links id="pf141901768529912" target="pf14190111200856" source="pf14189603971961" outcome="userPanel" redirect="true" fromaction="#{sessionBean.goHome}"/>
+  <links id="pf14190224395191" target="pf14190224395192" source="pf14190224395190" outcome="success" redirect="true" fromaction="#{accBean.deleteAccount}"/>
+  <links id="pf14190321800763" target="pf14190111200856" source="pf14190070894834" outcome="success" redirect="true" fromaction="#{donBean.cancelDonation}"/>
+</pageflow:Pageflow>

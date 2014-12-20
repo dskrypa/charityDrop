@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:rich="http://richfaces.org/rich">
+<h:head>
+	<link rel="stylesheet" type="text/css" href="main.css" />
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{sessionBean.fromEdit}" />
+	</f:metadata>
+</h:head>
+<h:body styleClass="body">
+	<center>
+		<h:outputText value="Edit Donation" styleClass="header" />
+	</center>
+	<div class="container">
+		<h:form>
+			<h:messages errorClass="errorMessage" infoClass="infoMessage" warnClass="warnMessage" />
+			<h:panelGrid columns="2">
+				<h:outputText value="Logged in as:" />
+				<h:outputText value="#{sessionBean.userEmail}" />	
+				
+				<h:outputText value="Donation Items Location" />
+				<h:selectOneMenu id="location" value="#{donBean.addrId}"
+					required="true" requiredMessage="Please enter a location."
+					validator="#{donBean.addressValidator}"
+				>
+					<f:selectItem itemValue="#{null}" itemLabel=" - select - " />
+					<f:selectItems value="#{sessionBean.addresses}" />
+				</h:selectOneMenu>
+				
+				<h:outputText value="How did you hear about us?" />
+				<h:selectOneMenu id="refMethod" value="#{donBean.refMethod}" required="false">
+					<f:selectItem itemValue="Television" itemLabel="Television" />
+					<f:selectItem itemValue="Radio" itemLabel="Radio" />
+					<f:selectItem itemValue="SearchEngine" itemLabel="Search Engine" />
+					<f:selectItem itemValue="Referral" itemLabel="Referral" />
+				</h:selectOneMenu>
+				
+				<h:outputText value="Pickup Date" />
+				<rich:calendar id="pickupDate" value="#{donBean.pickupDate}"
+					showWeeksBar="false" datePattern="M/dd/yyyy h:mm a"
+					validator="#{donBean.dateValidator}"
+				></rich:calendar>
+				
+				<h:outputText value="Size of Donation" />
+				<h:selectOneMenu id="size" value="#{donBean.size}"
+					required="true" requiredMessage="Please enter the size of your donation"
+				>
+					<f:selectItem itemValue="Small" itemLabel="Small (1-3 bags)" />
+					<f:selectItem itemValue="Medium" itemLabel="Medium (4-10 bags)" />
+					<f:selectItem itemValue="Large" itemLabel="Large (11-24 bags)" />
+					<f:selectItem itemValue="ExtraLarge" itemLabel="Extra Large (25+ bags)" />
+				</h:selectOneMenu>
+				
+				<h:outputText value="Additional Comments" />
+				<h:inputTextarea id="comments" value="#{donBean.comments}"
+					required="false" rows="4" cols="20" maxLength="1024"
+				></h:inputTextarea>
+				
+				<h:commandButton type="submit" value="Submit" action="#{donBean.updateDonation}" />
+				<h:commandButton type="reset" value="Reset" />
+			</h:panelGrid>
+		</h:form>
+		<h:form>
+			<center><h:commandButton type="submit" value="Cancel Donation" action="#{donBean.cancelDonation}" /></center>
+		</h:form>
+		<h:outputLink id="addAddress" value="addAddress.xhtml"><h:outputText value="Add a new address" /></h:outputLink>
+	</div>
+</h:body>
+</html>		

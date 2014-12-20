@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
+	<application>
+		<message-bundle>resources.application</message-bundle>
+		<locale-config>
+			<default-locale>en</default-locale>
+		</locale-config>
+	</application>
+	<navigation-rule>
+		<display-name>registration.xhtml</display-name>
+		<from-view-id>/registration.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{accBean.addUser}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/regConfirmation.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>index.xhtml</display-name>
+		<from-view-id>/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{accBean.validateLogin}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/userPanel.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>donate.xhtml</display-name>
+		<from-view-id>/donate.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{donBean.addDonation}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/donationReceipt.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>index.xhtml</display-name>
+		<from-view-id>/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{donBean.initDonationEdit}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/editDonation.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>editDonation.xhtml</display-name>
+		<from-view-id>/editDonation.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{donBean.updateDonation}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/donationReceipt.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>userPanel.xhtml</display-name>
+		<from-view-id>/userPanel.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{donBean.initDonationEdit}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/editDonation.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>addAddress.xhtml</display-name>
+		<from-view-id>/addAddress.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{accBean.addAddress}</from-action>
+			<from-outcome>success_d</from-outcome>
+			<to-view-id>/donate.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>addAddress.xhtml</display-name>
+		<from-view-id>/addAddress.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{accBean.addAddress}</from-action>
+			<from-outcome>success_e</from-outcome>
+			<to-view-id>/editDonation.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>donationReceipt.xhtml</display-name>
+		<from-view-id>/donationReceipt.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{sessionBean.goHome}</from-action>
+			<from-outcome>index</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>donationReceipt.xhtml</display-name>
+		<from-view-id>/donationReceipt.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{sessionBean.goHome}</from-action>
+			<from-outcome>userPanel</from-outcome>
+			<to-view-id>/userPanel.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>deleteAccount.xhtml</display-name>
+		<from-view-id>/deleteAccount.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{accBean.deleteAccount}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/goodbye.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>editDonation.xhtml</display-name>
+		<from-view-id>/editDonation.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{donBean.cancelDonation}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/userPanel.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+</faces-config>

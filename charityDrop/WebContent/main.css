@@ -1,0 +1,72 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	font-family: verdana;
+	background-color: #e0ffff;
+}
+
+#addAddress{
+	position: fixed;
+	top: 83px;
+	left: 500px;
+}
+
+.errorMessage{
+	color:red;
+}
+
+.infoMessage{
+	color:blue;
+}
+
+.warnMessage{
+	color:orange;
+}
+
+.header{
+	font-size:32px
+}
+
+.container{
+	background-color: #fff9c1;
+	width: 90%;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.h1{
+	text-align: center;
+	color: #ffffff;
+	background-color: #009dd9;
+	box-shadow: -5px -5px 0px 5px #00ccff;
+}
+
+.prompt{
+	color: #ffffff;
+	background-color: #009dd9;
+	box-shadow: -5px -5px 0px 5px #00ccff;
+}
+
+.form{
+	margin-left: auto;
+	margin-right: auto;
+	width: 800px;
+}
+
+.button{
+	background-color: #009dd9;
+	color: #ffffff;
+}
+
+.butA{
+	box-shadow: 10px 10px 0px 5px #c9e592;
+}
+
+.butB{
+	box-shadow: 10px 10px 0px 5px #ffff66;
+}
+
+.butC{
+	box-shadow: 10px 10px 0px 5px #ff6666;
+}

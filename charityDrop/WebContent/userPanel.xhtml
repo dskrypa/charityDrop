@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<link rel="stylesheet" type="text/css" href="main.css" />
+</h:head>
+<h:body styleClass="body">
+	<center>
+		<h:outputText value="Charity Drop" styleClass="header" />
+		<br/>
+		<h:messages errorClass="errorMessage" infoClass="infoMessage" warnClass="warnMessage" />
+	</center>
+	<div class="container">
+		<h:outputText value="Welcome, #{sessionBean.user.firstname}!" />
+		<br/>
+		<h:outputLink id="toDonate" value="donate.xhtml"><h:outputText value="Make a Donation" /></h:outputLink><br/>
+		<h:outputLink id="toDelAcc" value="deleteAccount.xhtml"><h:outputText value="Delete my account" /></h:outputLink><br/>
+		
+		<h:form>
+			<center>Change Password</center>
+			<h:panelGrid columns="2">
+			<h:outputText value="Old Password" />
+				<h:inputSecret id="oldpassword" value="#{accBean.oldpassword}"
+					required="true" requiredMessage="Please enter old password!"
+				></h:inputSecret>
+				
+				<h:outputText value="Password" />
+				<h:inputSecret id="password" value="#{accBean.password}" binding="#{password}"
+					required="true" maxLength="255" requiredMessage="Please enter new password!"
+				></h:inputSecret>
+				<h:outputText value="Confirm Password" />
+				<h:inputSecret id="confirmpassword" value="#{accBean.confirmpassword}"
+					required="true" maxLength="255" requiredMessage="Please confirm new password!"
+					validator="#{accBean.pwValidator}"
+				>
+					<f:attribute name="password" value="#{password}" />
+				</h:inputSecret>
+				
+				<h:commandButton type="submit" value="Submit" action="#{accBean.changePassword}" />
+				<h:commandButton type="reset" value="Reset" />
+			</h:panelGrid>
+		</h:form>
+		<br/><br/>
+		<h:form>
+			<center>Edit a donation</center>
+			<h:panelGrid columns="2">
+				<h:outputText value="Donations" />
+				<h:selectOneListbox id="donation" value="#{donBean.donId}" required="true" requiredMessage="Please select a donation.">
+					<f:selectItems value="#{sessionBean.donations}" />
+				</h:selectOneListbox>
+				<h:commandButton type="submit" value="Edit" action="#{donBean.initDonationEdit}" />
+			</h:panelGrid>
+		</h:form>
+		<br/><br/>
+		<h:outputLink id="toIndex" value="index.xhtml"><h:outputText value="Logout" /></h:outputLink>
+	</div>
+</h:body>
+</html>

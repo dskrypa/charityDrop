@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<link rel="stylesheet" type="text/css" href="main.css" />
+</h:head>
+<h:body styleClass="body">
+	<center>
+		<h:outputText value="Add Address" styleClass="header" />
+	</center>
+	<div class="container">
+		<h:form>
+			<h:messages errorClass="errorMessage" infoClass="infoMessage" warnClass="warnMessage"></h:messages>
+			
+			<h:panelGrid columns="2">
+				<h:outputText value="Address line 1" />
+				<h:inputText id="addrLine1" value="#{accBean.addrLine1}"
+					required="true" maxLength="255" requiredMessage="Address line 1 is required."
+				></h:inputText>
+				<h:outputText value="Address line 2" />
+				<h:inputText id="addrLine2" value="#{accBean.addrLine2}"
+					required="false" maxLength="255"
+				></h:inputText>
+	
+				<h:outputText value="City" />
+				<h:inputText id="city" value="#{accBean.city}"
+					required="true" maxLength="255" requiredMessage="Please Enter City!"
+				></h:inputText>
+	
+				<h:outputText value="State" />
+				<h:selectOneMenu id="usState" value="#{accBean.usState}"
+					required="true" requiredMessage="State is required."
+					validator="#{accBean.stateValidator}"
+				>
+					<f:selectItems value="#{accBean.validStates}" />
+				</h:selectOneMenu>
+	
+				<h:outputText value="Zip" />
+				<h:inputText id="zip" value="#{accBean.zip}"
+					required="true" maxLength="5" requiredMessage="Please Enter Zip Code!"
+					validator="#{accBean.zipValidator}"
+				></h:inputText>
+				
+				<h:outputText value="Cross Street" />
+				<h:inputText id="xStreet" value="#{accBean.xStreet}"
+					required="false" maxLength="255"
+				></h:inputText>
+	
+				<h:commandButton type="submit" value="Submit" action="#{accBean.addAddress}" />
+				<h:commandButton type="reset" value="Reset" />
+			</h:panelGrid>
+		</h:form>
+	</div>
+</h:body>
+</html>

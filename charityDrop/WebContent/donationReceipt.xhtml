@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<link rel="stylesheet" type="text/css" href="main.css" />
+</h:head>
+<h:body styleClass="body">
+	<div class="container">
+		<h:form>
+			<h:outputText value="Thank you for your donation!" styleClass="header"></h:outputText>
+			<h:messages errorClass="errorMessage" infoClass="infoMessage" warnClass="warnMessage"></h:messages>
+			
+			<h:panelGrid columns="2">
+				<h:outputText value="Logged in as" />				<h:outputText value="#{sessionBean.userEmail}" />
+				<h:outputText value="Your donation ID" />			<h:outputText value="#{donBean.donationid}" />
+				<h:outputText value="Pickup Date" />				<h:outputText value="#{donBean.pickupDate}" />
+				<h:outputText value="Location" />					<h:outputText value="#{donBean.addrInfo}" />
+				<h:outputText value="How did you hear about us?" />	<h:outputText value="#{donBean.refMethod}" />
+				<h:outputText value="Size of Donation" />			<h:outputText value="#{donBean.size}" />
+				<h:outputText value="Additional Comments" />		<h:outputText value="#{donBean.comments}" />
+			</h:panelGrid>
+		</h:form>
+		
+		<h:form>
+			<center><h:commandButton type="submit" value="Return" action="#{sessionBean.goHome}" /></center>
+		</h:form>
+	</div>
+</h:body>
+</html>

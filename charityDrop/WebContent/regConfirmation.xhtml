@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<link rel="stylesheet" type="text/css" href="main.css" />
+</h:head>
+<h:body styleClass="body">
+	<div class="container">
+		<h:form>
+			<h:outputText value="Registration Confirmation" styleClass="header" />
+			<h:messages errorClass="errorMessage" infoClass="infoMessage" warnClass="warnMessage" />
+			
+			<h:panelGrid columns="2">
+				<h:outputText value="Email" />						<h:outputText value="#{accBean.email}" />
+				<h:outputText value="Password" />					<h:outputText value="**************" />
+				<h:outputText value="First name" />					<h:outputText value="#{accBean.firstname}" />
+				<h:outputText value="Last name" />					<h:outputText value="#{accBean.lastname}" />
+				<h:outputText value="Phone Number" />				<h:outputText value="#{accBean.phone}" />
+				<h:outputText value="Preferred Contact Method" />	<h:outputText value="#{accBean.contactMethod}" />
+				<h:outputText value="Address Line 1" />				<h:outputText value="#{accBean.addrLine1}" />
+				<h:outputText value="Address Line 2" />				<h:outputText value="#{accBean.addrLine2}" />
+				<h:outputText value="City" />						<h:outputText value="#{accBean.city}" />
+				<h:outputText value="State" />						<h:outputText value="#{accBean.usState}" />
+				<h:outputText value="Zip" />						<h:outputText value="#{accBean.zip}" />
+				<h:outputText value="Cross Street" />				<h:outputText value="#{accBean.xStreet}" />
+			</h:panelGrid>
+		</h:form>
+		
+		<h:outputLink id="toIndex" value="index.xhtml"><h:outputText value="Home" /></h:outputLink>
+	</div>
+</h:body>
+</html>
